@@ -1,4 +1,13 @@
 -- Part One --
+-- Exercises --
+
+SELECT TOP 1000 *
+FROM BooksDB.dbo.books
+
+
+
+
+-- Part One --
 -- STUDIO --
 
 -- USE booksdb
@@ -306,7 +315,9 @@ FROM BooksDB.dbo.books AS b
 WHERE b.title = b.original_title
 AND b.average_rating >= 4.2
 ORDER BY b.average_rating DESC
-*/
+
+
+--CURRENT
 
 WITH avg_rating_by_year AS(
     SELECT AVG(b.av)
@@ -315,3 +326,4 @@ WITH avg_rating_by_year AS(
 SELECT b.title, b.original_publication_year AS pub_year, b.average_rating
 FROM BooksDB.dbo.books AS b
 WHERE 
+*/
