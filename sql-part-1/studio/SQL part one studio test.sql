@@ -1,12 +1,65 @@
 -- Part One --
 -- Exercises --
+/*
+SELECT TOP 1000 *
+FROM BooksDB.dbo.books
 
--- SELECT TOP 1000 *
--- FROM BooksDB.dbo.books
+SELECT COUNT(title)
+FROM BooksDB.dbo.books
 
+SELECT COUNT(title)
+FROM BooksDB.dbo.books
+WHERE original_publication_year < 1800
 
+SELECT DISTINCT authors
+FROM BooksDB.dbo.books
 
+SELECT count(language_code)
+FROM BooksDB.dbo.books
+WHERE language_code = 'eng' OR language_code = 'en-'
 
+SELECT COUNT(original_publication_year)
+FROM BooksDB.dbo.books
+WHERE original_publication_year BETWEEN 1914 AND 1921
+
+SELECT TOP 1000 *
+FROM BooksDB.dbo.book_tags
+ORDER BY tag_id
+
+SELECT COUNT(goodreads_book_id) AS count_goodreads_id
+FROM BooksDB.dbo.book_tags
+GROUP BY tag_id
+
+SELECT TOP 1000 *
+FROM BooksDB.dbo.ratings
+ORDER BY rating DESC
+
+SELECT COUNT([user_id])
+FROM BooksDB.dbo.ratings
+WHERE rating < 2
+
+SELECT COUNT(book_id)
+FROM BooksDB.dbo.ratings
+WHERE rating > 4
+
+SELECT tag_id, tag_name
+FROM BooksDB.dbo.tags
+WHERE tag_name LIKE '%mystery%'
+
+SELECT *
+FROM BooksDB.dbo.tags
+WHERE tag_name < 'd' AND tag_name >= 'c';
+
+SELECT user_id, COUNT(book_id) AS total_books_to_read
+FROM BooksDB.dbo.to_read
+GROUP BY [user_id]
+ORDER BY [user_id] ASC
+
+SELECT user_id, COUNT(book_id) AS total_books_to_read
+FROM BooksDB.dbo.to_read
+GROUP BY [user_id]
+ORDER BY total_books_to_read DESC
+*/
 -- Part One --
 -- STUDIO --
 
@@ -314,7 +367,6 @@ INNER JOIN books b ON b.book_id = bt.goodreads_book_id
 GROUP BY bt.tag_id, t.tag_name, b.title, b.authors, b.average_rating
 HAVING bt.tag_id = 191
 ORDER BY sum_of_all_usages DESC;
-*/
 
 USE BooksDB;
 SELECT TOP 10
@@ -327,7 +379,6 @@ GROUP BY tr.book_id, b.title
 ORDER BY sum_of_all_usages DESC;
 
 
-/*
 USE BooksDB
 SELECT TOP 20
 SUM([count]) AS number_of_times_tag_id_used,
