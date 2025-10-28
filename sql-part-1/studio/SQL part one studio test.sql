@@ -212,13 +212,46 @@ Start by joining the `books` and `book_tags` tables ON the `books.best_book_id` 
 **Tag Id:**
 
 **Part C:** What is this particular tag?
-*/
+
 
 -- COME BACK HERE FOR PART 3 HOMEWORK
---SELECT TOP 1 b.title, b.average_rating, b.books_count,tr.goodreads_book_id, tr.count
---FROM BooksDB.dbo.books AS b
---RIGHT JOIN BooksDB.dbo.book_tags AS tr
---ON b.best_book_id = tr.goodreads_book_id;
+SELECT TOP 1 b.title, b.average_rating, b.books_count,tr.goodreads_book_id, tr.count
+FROM BooksDB.dbo.books AS b
+RIGHT JOIN BooksDB.dbo.book_tags AS tr
+ON b.best_book_id = tr.goodreads_book_id;
+
+SELECT TOP 100 b.title, b.average_rating, b.books_count,tr.goodreads_book_id, tr.tag_id, tr.count
+FROM BooksDB.dbo.books AS b
+JOIN BooksDB.dbo.book_tags AS tr
+ON b.best_book_id = tr.goodreads_book_id
+ORDER BY tr.count DESC;
+
+USE BooksDB;
+SELECT TOP 10
+    COUNT(tr.book_id) AS sum_of_all_usages,
+    tr.book_id,
+    b.title
+FROM to_read tr
+INNER JOIN books b ON tr.book_id = b.book_id
+GROUP BY tr.book_id, b.title
+ORDER BY sum_of_all_usages DESC;
+
+USE BooksDB;
+SELECT TOP 10
+    COUNT(tr.book_id) AS sum_of_all_usages,
+    tr.user_id
+FROM to_read tr
+INNER JOIN books b ON tr.book_id = b.book_id
+GROUP BY tr.user_id
+ORDER BY sum_of_all_usages DESC;
+*/
+
+USE BooksDB;
+SELECT b.title
+FROM to_read tr
+INNER JOIN books b ON tr.book_id = b.book_id
+WHERE tr.[user_id] = 11932;
+
 
 /*
 SELECT TOP 100 b.title, b.average_rating, b.books_count,tr.goodreads_book_id, tr.tag_id, tr.count
