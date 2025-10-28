@@ -1,8 +1,8 @@
 -- Part One --
 -- Exercises --
 
-SELECT TOP 1000 *
-FROM BooksDB.dbo.books
+-- SELECT TOP 1000 *
+-- FROM BooksDB.dbo.books
 
 
 
@@ -284,6 +284,66 @@ HAVING t.tag_name IN ('author-female', 'woman-author','female-writer',
 'woman-trans-agender-authors')
 ORDER BY average_rating DESC, sum_of_all_usages DESC;
 
+
+USE BooksDB
+SELECT
+SUM([count]) AS sum_of_all_usages,
+bt.tag_id,
+t.tag_name,
+b.authors,
+b.average_rating
+FROM book_tags bt
+INNER JOIN tags t ON t.tag_id = bt.tag_id
+INNER JOIN books b ON b.book_id = bt.goodreads_book_id
+GROUP BY bt.tag_id, t.tag_name, b.authors, b.average_rating
+HAVING t.tag_name IN ('spring', 'easter')
+ORDER BY average_rating DESC, sum_of_all_usages DESC;
+
+
+USE BooksDB
+SELECT
+SUM([count]) AS sum_of_all_usages,
+bt.tag_id,
+t.tag_name,
+b.title,
+b.authors,
+b.average_rating
+FROM book_tags bt
+INNER JOIN tags t ON t.tag_id = bt.tag_id
+INNER JOIN books b ON b.book_id = bt.goodreads_book_id
+GROUP BY bt.tag_id, t.tag_name, b.title, b.authors, b.average_rating
+HAVING bt.tag_id = 191
+ORDER BY sum_of_all_usages DESC;
+*/
+
+USE BooksDB;
+SELECT TOP 10
+    SUM([count]) AS sum_of_all_usages,
+    tr.book_id,
+    b.title
+FROM to_read tr
+INNER JOIN books b ON tr.book_id = b.book_id
+GROUP BY tr.book_id, b.title
+ORDER BY sum_of_all_usages DESC;
+
+
+/*
+USE BooksDB
+SELECT TOP 20
+SUM([count]) AS number_of_times_tag_id_used,
+bt.tag_id,
+t.tag_name,
+b.authors,
+b.average_rating,
+b.title
+FROM book_tags AS bt
+
+INNER JOIN tags t ON t.tag_id = bt.tag_id
+INNER JOIN books b ON b.book_id = bt.goodreads_book_id
+
+GROUP BY bt.tag_id, t.tag_name, b.authors, b.average_rating, b.title
+HAVING t.tag_name IN ('halloween', 'indigenous')
+ORDER BY number_of_times_tag_id_used DESC
 
 -- STUDIO 4
 
