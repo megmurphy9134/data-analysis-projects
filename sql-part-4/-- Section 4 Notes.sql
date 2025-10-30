@@ -52,7 +52,7 @@ VALUES ('Ava', 'Rodriguez', 'ava.rodriguez@gmail.com', 'pro'),
     ('Liam', 'Patel', 'liam.patel@gmail.com', 'free'),
     ('Noah', 'Chen', 'noah.chen@gmail.com', 'basic');
 
-SELECT * FROM Sep2025JunkDB.megan_murphy.Customers
+SELECT * FROM Sep2025JunkaDB.megan_murphy.Customers
 
 -- Update data, TIP!!! USE SELECT BEFORE WHERE WHEN CHANGING DATA TO TEST
 UPDATE Sep2025JunkDB.megan_murphy.Customers

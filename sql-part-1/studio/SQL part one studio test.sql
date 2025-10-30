@@ -244,7 +244,7 @@ FROM to_read tr
 INNER JOIN books b ON tr.book_id = b.book_id
 GROUP BY tr.user_id
 ORDER BY sum_of_all_usages DESC;
-*/
+
 
 USE BooksDB;
 SELECT b.title
@@ -253,7 +253,6 @@ INNER JOIN books b ON tr.book_id = b.book_id
 WHERE tr.[user_id] = 11932;
 
 
-/*
 SELECT TOP 100 b.title, b.average_rating, b.books_count,tr.goodreads_book_id, tr.tag_id, tr.count
 FROM BooksDB.dbo.books AS b
 JOIN BooksDB.dbo.book_tags AS tr
