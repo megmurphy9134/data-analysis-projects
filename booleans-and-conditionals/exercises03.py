@@ -28,30 +28,21 @@ engine_temperature = 1200
 # f) Otherwise, print "Fuel and engine status pending..." 
 
 # Code 5a - 5f here:
-#AND
-if fuel_level > 20000:
-    if engine_temperature <= 2500:
-        print("Full tank. Engines good.")
-#AND
-elif fuel_level > 10000:
-    if engine_temperature <= 2500:
-        print("Fuel level above 50%. Engines good.")
-#AND
-elif fuel_level > 5000:
-    if engine_temperature <= 2500:
-        print("Fuel level above 25%. Engines good.")
-#OR
-elif fuel_level <= 5000:
-    if engine_temperature > 2500:
-        print("Check fuel level. Engines running hot.")
-#OR
-elif fuel_level <= 1000:
-    if engine_temperature > 3500:
-        if engine_indicator_light == 'red blinking':
-            print("ENGINE FAILURE IMMINENT")
+
+if (fuel_level < 1000 or engine_temperature > 3500 or engine_indicator_light == "red blinking"):
+    print("ENGINE FAILURE IMMINENT")
+elif (fuel_level <= 5000 or engine_temperature > 2500):
+    print("Check fuel level. Engines running hot.")
+elif (fuel_level > 20000 and engine_temperature <= 2500):
+    print("Full tank. Engines good.")
+elif (fuel_level > 10000 and engine_temperature <= 2500):
+    print("Fuel level above 50%. Engines good.")
+elif (fuel_level > 5000 and engine_temperature <= 2500):
+    print("Fuel level above 25%. Engines good.")
 else:
-  print("Fuel and engine status pending...")
-## NOT COMPLETE - REVISIT
+    print("Fuel and engine status pending...")
+
+# Output: Engine Failure Imminent
 
 # 6) a) Create the variable command_override, and set it to be true or false.
 # If command_override is false, then the shuttle should only launch if the fuel and engine check are OK.
@@ -59,9 +50,13 @@ else:
 
 command_override = False
 
+if command_override == False:
+    print('Check fuel and engine before engine launch.')
+else:
+    print('Shuttle will launch.')
+
 # 6) b) Code the following if/else check:
-if fuel_level > 20000 AND engine_indicator_light != 'red blinking' OR command_override == True:
-    print("Cleared to launch")
-
-# If fuel_level is above 20000 AND engine_indicator_light is NOT red blinking OR command_override is true print "Cleared to launch!" Else print "Launch scrubbed!"
-
+if (fuel_level > 20000 and engine_indicator_light != 'red blinking' or command_override == True):
+   print("Cleared to launch")
+else:
+    print('Launch scrubbed!')
