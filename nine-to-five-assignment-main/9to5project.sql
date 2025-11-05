@@ -54,7 +54,7 @@ FROM dbo.industry AS ind,
 
 AND ind.industry_code = series.industry_code
 AND series.series_id = an16.series_id
-*/
+
 USE LaborStatisticsDB;
 SELECT COUNT(an16.series_id)
 FROM 
@@ -67,3 +67,17 @@ USE LaborStatisticsDB;
 SELECT COUNT(an16.id)
 FROM 
     dbo.annual_2016 AS an16
+
+
+
+-- Question 4 --
+-- In January 2017, what is the average weekly hours worked by production and nonsupervisory employees across all industries?
+USE LaborStatisticsDB;
+SELECT COUNT(an16.series_id)
+FROM 
+    dbo.annual_2016 AS an16,
+    dbo.industry AS ind
+    WHERE an16.id = ind.id
+    AND ind.industry_name IS NOT NULL
+*/
+

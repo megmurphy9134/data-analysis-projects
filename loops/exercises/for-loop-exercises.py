@@ -21,3 +21,14 @@ for num in range(12, -15, -2):
 for num in range(50, 19, -1):
      if num % 3 == 0:
           print(num)
+
+comics = {
+    'Gary Larson' : 'The Far Side',
+    'Terri Libenson' : 'Pajama Diaries',
+    'Hilary B. Price' : 'Rhymes with Orange',
+    'Jim Toomey' : "Sherman's Lagoon"
+}
+
+# Iterate by keys, and print out the dictionary key/value pairs:
+for key in comics.keys():
+    print(key, comics[key])
