@@ -40,5 +40,6 @@ for flavor in flavors:
 ## If it is, update fanciest to this flavor and highest_cost to its price.
     fanciest = flavor
     highest_cost = flavors[flavor]
+    
 ## After the loop, print the most expensive flavor.
 print("The fanciest flavor is", fanciest, "and it costs", highest_cost)

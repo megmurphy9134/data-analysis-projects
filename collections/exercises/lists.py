@@ -14,23 +14,32 @@ cargo_hold = ['oxygen tanks', 'space suits', 'parrot', 'instruction manual', 'me
 # Use bracket notation to replace 'slinky' in the list with 'space tether'. Print the list to confirm the change.
 cargo_hold[5] = 'space tether'
 
+print(cargo_hold)
+
 # Remove the last item from the list with pop. Print the element removed and the updated list.
-#REVISIT
-# cargo_hold.pop(6)
-#popped_item = cargo_hold.pop()
-#print("Popped Item: ", {popped_item})
+print(cargo_hold[6])
+popped_item = cargo_hold.pop(6)
+print("Popped Item: ", popped_item)
 
 print(cargo_hold)
 
 # Remove the first item from the list with pop. Print the element removed and the updated list.
-#cargo_hold.pop(0)
-#popped_item = cargo_hold.pop()
-#print("Popped Item: ", {popped_item})
+popped_item = cargo_hold.pop(0)
+print("Popped Item: ", popped_item)
+
+print(cargo_hold)
 
 # append and insert require arguments inside the (). Add the items 1138 and ‘20 meters’ to the the list - the number at the start and the string at the end. Print the updated list to confirm the changes.
+cargo_hold.append('20 meters')
+cargo_hold.insert(0, 1138)
 
+print(cargo_hold)
 
 # Use the remove method to take the parrot out of cargo_hold, then print the updated list.
-
+cargo_hold.remove('parrot')
+print(cargo_hold)
 
 # Use .format() to print the final list and its length. "The list ___ contains ___ items."
+output = "The list {0} contains {1} items."
+
+print(output.format(cargo_hold, len(cargo_hold)))
