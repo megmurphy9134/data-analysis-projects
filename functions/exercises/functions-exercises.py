@@ -49,6 +49,7 @@ def make_space_line(numSpaces, numChars):
 make_space_line(3, 5)
 
 # Part 2 C -- Make Isosceles Triangle
+#Revisit
 def make_isosceles_triangle(height):
     triangle = ''
     for i in range(height):
@@ -58,6 +59,7 @@ def make_isosceles_triangle(height):
 print(make_isosceles_triangle(5))
 
 # Part 3 -- Make a Diamond
+#Revisit
 def make_diamond(height):
     diamond = ''
     triangle = make_isosceles_triangle(height)
